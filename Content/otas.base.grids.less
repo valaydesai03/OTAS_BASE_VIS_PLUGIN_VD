@@ -1,0 +1,44 @@
+﻿@import-once "otas.base.variables.less";
+
+// GRIDS
+// -----
+.dashboard table
+{
+    border-collapse: collapse;
+}
+
+.dashboard th, .dashboard td
+{
+    font-family: Verdana;
+    font-size: 12px;
+    padding: 4px 4px;
+}
+
+.dashboard th
+{
+    background-color: @grid-header-clr;
+    text-align: center;
+    border-bottom: solid 1px #333;
+    color: @grid-header-text-clr;
+}
+
+.dashboard td
+{
+    border: solid 1px @grid-border-clr;
+    color: @grid-text-clr;
+}
+
+.dashboard tr:nth-child(even)
+{
+    background-color: @grid-row-clr2;
+}
+
+.dashboard tr:nth-child(odd)
+{
+    background-color: @grid-row-clr1;
+}
+
+.dashboard tr:hover
+{
+    background-color: @grid-row-hover-clr;
+}

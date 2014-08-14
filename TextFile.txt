@@ -1,0 +1,122 @@
+﻿<!--<div id="stock"></div>
+<div class="stock-descriptor-load" data-stock="OT.TTCH.S"></div>
+
+<div id="dailyFlagEx"></div>
+
+<h3>Daily Flag (Volume)</h3>
+<div class="dailyflag-load" data-stock="OT.JUST.S" data-header="true" data-date="" data-topic="volume"></div>
+
+<h2>DailyFlagList</h2>
+<h3>Javascript</h3>
+<a href="#" id="sortStock">Sort By Stock</a>
+<a href="#" id="sortFlags">Sort By Flags</a>
+<a href="#" id="sortFlagsDir">Sort By Flags (Directionally)</a>
+<div id="list"></div>
+
+<div id="flags"></div>
+
+    
+
+<div id="stock"></div>
+<div id="flagsCDS">CDS</div>
+<div id="flagsDIRECTORDEALING">DIRECTORDEALING</div>
+<div id="flagsDIVERGENCECDS">DIVERGENCECDS</div>
+<div id="flagsDIVERGENCEEPS">DIVERGENCEEPS</div>
+    <div id="flagsDIVERGENCESI">DIVERGENCESI</div>
+    <div id="flagsDIVERGENCESKEW">DIVERGENCESKEW</div>
+    <div id="flagsDIVIDEND">DIVIDEND</div>
+    <div id="flagsPRICEACTION">PRICEACTION</div>-->
+
+    <div id="flagsPRICEACTIONNEW"></div>
+
+
+/*window.otasBase.data.api.v1.stock('OT.TTCH.S').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.PRICEACTION }, function (flags) {
+	    //$('#flags').dailyFlagRow({ flags: flags, tooltip: true })
+	    $('#flags').dailyFlag({ flags: flags[window.otasBase.enums.dailyFlagType.PRICEACTION], header: true });
+	});*/
+   
+
+	/*window.otasBase.data.api.v1.stock('ot.just.s')(function (stock) {
+	    $('#stock').stockDescriptor({ stock: stock });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.CDS }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsCDS').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIRECTORDEALING }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIRECTORDEALING').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIVERGENCECDS }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIVERGENCECDS').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIVERGENCEEPS }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIVERGENCEEPS').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIVERGENCESI }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIVERGENCESI').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIVERGENCESKEW }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIVERGENCESKEW').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.DIVIDEND }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsDIVIDEND').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.PRICEACTION }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsPRICEACTION').dailyFlagRow({ flag: flags, header: true, tooltip: false });
+	});
+
+
+	window.otasBase.data.api.v1.stock('ot.tcs.s').dailyFlags({ date: "2014-06-01" }, function (flags) {
+	    console.log(':::dailyFlags:::');
+	    $('#flagsCDS').dailyFlagRow({ flag: flags });
+	});*/
+
+	window.otasBase.data.api.v1.stock('ot.just.s').dailyFlags({ topic: window.otasBase.enums.dailyFlagType.PRICEACTION, date: "" }, function (flag) {
+	    $('#flagsPRICEACTIONNEW').dailyFlag({ flag: flag[window.otasBase.enums.dailyFlagType.PRICEACTION], header: true, tooltip: false });
+	});
+
+
+
+
+
+	
+	/*window.otasBase.data.api.v1.stock('OT.JUST.S').dailyFlags({ date: "", topic: window.otasBase.enums.dailyFlagType.PRICEACTION }, function (flag) {
+            $('#dailyFlagEx').dailyFlag({ flag: flag[window.otasBase.enums.dailyFlagType.PRICEACTION], header: true });
+        });
+	   
+
+	$.when(window.otasBase.data.api.v1.stocks(137109)(),
+              window.otasBase.data.api.v1.stocks(137109).dailyFlags({ date: '2014-05-07' }))
+        .done(function (stocks, flags) {
+            window.otasBase.data.utils.zipStocksAndFlags(stocks, flags);
+            $('#list').dailyFlagList({ stocks: stocks });
+        });
+
+       $('#sortStock').click(function () {
+           $('#list').dailyFlagList("sort", otasBase.data.utils.sorting.sortStocksByName())
+       });
+
+       $('#sortFlags').click(function () {
+           $('#list').dailyFlagList("sort", otasBase.data.utils.sorting.sortStocksByFlags({ direction: false }))
+       });
+
+       $('#sortFlagsDir').click(function () {
+           $('#list').dailyFlagList("sort", otasBase.data.utils.sorting.sortStocksByFlags({ direction: true }))
+       });
+	   */
+	   

@@ -1,0 +1,251 @@
+﻿@import-once "otas.base.variables.less";
+
+// Daily Flags
+// -----------
+.dailyflag-container
+{
+    width: 72px * @signal-size;
+    margin: 0px auto;
+    background-color: black;
+    border-radius: 6px * @signal-size;
+    padding: (2px * @signal-size) 0px;
+    border: solid 1px #808080;
+    background: #191919;
+    background: -moz-linear-gradient(top,  #191919 0%, #000000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#191919), color-stop(100%,#000000));
+    background: -webkit-linear-gradient(top,  #191919 0%,#000000 100%);
+    background: -o-linear-gradient(top,  #191919 0%,#000000 100%);
+    background: -ms-linear-gradient(top,  #191919 0%,#000000 100%);
+    background: linear-gradient(to bottom,  #191919 0%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191919', endColorstr='#000000',GradientType=0 );
+    cursor: default;
+}
+
+.dailyflag-container:hover
+{
+    background: #494949;
+    background: -moz-linear-gradient(top,  #313131 0%, #191919 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#313131), color-stop(100%,#191919));
+    background: -webkit-linear-gradient(top,  #313131 0%,#191919 100%);
+    background: -o-linear-gradient(top,  #313131 0%,#191919 100%);
+    background: -ms-linear-gradient(top,  #313131 0%,#191919 100%);
+    background: linear-gradient(to bottom,  #313131 0%,#191919 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#313131', endColorstr='#191919',GradientType=0 );
+}
+
+.dailyflag-header
+{
+    font-size: 10px * @signal-size;
+    color: #b7b7b7;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.dailyflag
+{
+    width: 64px * @signal-size;
+    height: 32px * @signal-size;
+    padding: 0px 0px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.dailyflag icon, .dailyflag span
+{
+    margin: 0px 0px;
+    padding: 0px 0px;
+    line-height: 32px * @signal-size;
+}
+
+.dailyflag icon.sml
+ {
+    font-size: @icon-size-sml;
+ }
+
+ .dailyflag icon.lrg
+{
+    font-size: @icon-size-lrg;
+}
+
+ .dailyflag icon.med
+{
+    font-size: @icon-size-med;
+}
+
+.dailyflag icon.pos
+{
+    color: @clr-signal-pos;
+}
+
+.dailyflag icon.neg
+{
+    color: @clr-signal-neg;
+}
+
+.dailyflag icon.neu
+{
+    color: @clr-signal-neu;
+}
+
+.dailyflag span.lrg
+{
+    font-size: 18px * @signal-size;
+}
+
+.dailyflag span.sml
+{
+    font-size: 12px * @signal-size;
+}
+
+.dailyflag-tooltip
+{
+    font-size: 11px !important;
+}
+
+.dailyflag-tooltip table
+{
+    border: solid 1px white !important;
+}
+
+.dailyflag-tooltip tr
+{
+    background-color: black !important;
+}
+
+.dailyflag-tooltip td
+{
+    padding: 0px 6px !important;
+    font-size: 11px !important;
+    background-color: black !important;
+}
+
+.volume-signal
+{
+    font-family: 'Lucida Sans';
+    font-weight: bold;
+    color: @clr-signal-neu;
+}
+
+.dd-signal, .event-signal
+{
+    border-radius: 12px * @signal-size;
+    padding: 0px (2px * @signal-size) !important;
+    font-family: Tahoma;
+    font-size: 11px * @signal-size;
+    font-weight:bold;
+    display: inline-block;
+    margin-top: (5px * @signal-size) !important;
+    height: (22px * @signal-size) !important;
+    line-height: (18px * @signal-size) !important;
+    width: (40px * @signal-size) !important;
+}
+
+.dd-signal
+{
+    border: (3px * @signal-size) solid #5c5c5c;
+    margin-top: (4px * @signal-size);
+}
+
+.event-signal
+{
+    margin-top: (7px * @signal-size);
+    color: black;
+}
+
+.event-signal.today
+{
+    background-color: #75afff;
+    /*border: solid (4px * @signal-size) white;*/
+}
+
+.event-signal.future
+{
+    background-color: @clr-signal-neu;
+}
+
+.event-signal.past
+{
+    background-color: white;
+}
+
+
+.dd-signal.buy
+{
+    border-color: @clr-signal-pos;
+    color: @clr-signal-pos;
+}
+
+.dd-signal.sell
+{
+    border-color: @clr-signal-neg;
+    color: @clr-signal-neg;
+}
+
+.dd-signal.buysell
+{
+    border-top-color: @clr-signal-pos;
+    border-bottom-color: @clr-signal-neg;
+}
+
+.si-div
+{
+    font-size: 12px * @signal-size;
+    position: relative;
+    left: -6px * @signal-size;
+    top: -12px * @signal-size;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.cds-signal.med.pos
+{
+    margin: 0px (-14px * @signal-size) !important;
+}
+
+.cds-signal.sml.pos
+{
+    margin: 0px (-9px * @signal-size) !important;
+}
+
+.cds-signal.med.neg
+{
+    margin: 0px (-10px * @signal-size) !important;
+}
+
+.cds-signal.sml.neg
+{
+    margin: 0px (-6px * @signal-size) !important;
+}
+
+span.diverg-signal
+{
+    font-size: (11px * @signal-size);
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+icon.diverg-signal
+{
+    margin: 0px (-6px * @signal-size) !important;
+    position: relative;
+    top: 3px * @signal-size;
+}
+
+.diverg-signal-multi
+{
+    font-family: 'Lucida Sans';
+    font-weight: bold;
+    color: @clr-signal-neu;
+}
+
+.dailyflagrow-container
+{
+    overflow: hidden;
+}
+
+.dailyflagrow-container .dailyflag-container
+{
+    float: left !important;
+    margin: 0px (1px * @signal-size)
+}
