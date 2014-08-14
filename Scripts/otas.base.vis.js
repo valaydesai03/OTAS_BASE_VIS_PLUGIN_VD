@@ -63,7 +63,7 @@
             $.ajax({
                 url: url,
                 type: 'get',
-                data: params,
+                data: '',
                 dataType: 'xml',
                 success: function (data) {                    
                     deferred.resolve(data);
@@ -128,8 +128,8 @@
 
                 // GET STAMPS
                 toReturn.stockStamps = function (params, callback) {
-                    var header = params['isHeader'];
-                    if (header === true) {
+                    var header = params['isHeader'];                    
+                    if (header === true || header === 'true') {                        
                         return apiCall(otasBase.stampUrl + "/" + params['topic'] + "/" + params['stock'] + "/1/1", 'stamp', callback);
                     } else {
                         return apiCall(otasBase.stampUrl + "/" + params['topic'] + "/" + params['stock'], 'stamp', callback);
@@ -1694,6 +1694,7 @@
         this.$element = $(element);
         this.options = $.extend({}, StockPeers.DEFAULTS, options);
         this.peers = options.stock;
+        this.isPeerDailyFlag = options.peerDailyFlag;
     }
 
     StockPeers.DEFAULTS = {
@@ -1709,7 +1710,7 @@
         container.append(header);
         var tbody = $(document.createElement("tbody"));
         container.append(header);
-        
+        var peerDailyFlag = this.isPeerDailyFlag;
 
         $.each(peers, function (index) {
             var peer = peers[index].otasSecurityId;
@@ -1722,17 +1723,18 @@
                 $(peerName).stockDescriptor({ stock: peer });
             });
 
-            var peerFlagRow = $(document.createElement("tr"));
-            container.append(peerFlagRow);
+            if (peerDailyFlag === true || peerDailyFlag ==='true') {
+                var peerFlagRow = $(document.createElement("tr"));
+                container.append(peerFlagRow);
 
-            var peerDailyFlagRow = $(document.createElement("td"));
-            window.otasBase.data.api.v1.stock(peer).dailyFlags({}, function (flags) {
-                $(peerDailyFlagRow).dailyFlagRow({ flags: flags })
-            });
+                var peerDailyFlagRow = $(document.createElement("td"));
+                window.otasBase.data.api.v1.stock(peer).dailyFlags({}, function (flags) {
+                    $(peerDailyFlagRow).dailyFlagRow({ flags: flags })
+                });
+                peerFlagRow.append(peerDailyFlagRow);
+            }
 
-            peerFlagRow.append(peerDailyFlagRow);
             peerRow.append(peerName);
-
 
         });
 
@@ -1761,9 +1763,10 @@
         $('.stock-peer').each(function () {
             var $this = $(this);
             var stock = $this.data("stock");            
+            var peerDailyFlag = $this.data("dailyflag");
 
             Data.api.v1.stock(stock).stockPeers(function (peers) {
-                $this.stockPeers({ stock: peers })
+                $this.stockPeers({ stock: peers, peerDailyFlag: peerDailyFlag })
             });
         });
     });

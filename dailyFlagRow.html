@@ -17,7 +17,6 @@
     <link rel="stylesheet/less" href="Content/otas_icons-embedded.css" type="text/css">
 
     <script type="text/javascript" src="Scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.xdomainajax.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/less-1.3.3.min.js"></script>
     <script type="text/javascript" src="Scripts/highcharts.js"></script>
@@ -31,31 +30,19 @@
     </style>-->
 </head>
 <body>
-    <h1>Dailyflag(PriceAction) with HTML</h1>
-    <div class="dailyflag-load" data-stock="OT.AVON.S" data-header="true" data-date="2014-05-07" data-topic="priceAction"></div>
+    <h1>Dailyflag Row with HTML</h1>
+    <div class="dailyflagrow-load" data-stock="OT.GLNG.S" data-date="2014-05-07"></div>
 
-    <h1>Dailyflag with Javascript</h1>
+    <h1>Dailyflag Row with Javascript</h1>
     <form id="frmGetComp" action="">
         <p>API Key: <input type="text" id="txtAPI" value="" required /></p>
-        <p>Stock: <input type="text" id="txtStock" value="" required /></p>
-        <p>Topic: 
-            <select id="drpTopic">
-                <option value="">Select</option>                
-            </select>
-        </p>        
-        <p>Date: <input type="text" id="txtDate" value="" /></p>
-        <p>Header: 
-            <select id="drpHeader">
-                <option value="">Select</option>
-                <option value="true">True</option>
-                <option value="False">False</option>
-            </select> 
-        </p>
+        <p>Stock: <input type="text" id="txtStock" value="" required /></p>              
+        <p>Date: <input type="text" id="txtDate" value="" /></p>        
         <p><button id="btnCall">Call</button></p>
     </form>
     
     <div id="loadingDiv"></div>
-    <div id="flag"></div>
+    <div id="flagRow"></div>
 
     <script type="text/javascript">        
         window.otasBase.data.apiKey = "4D69167EF59EAC183AE1845A2D7EB";
@@ -64,11 +51,6 @@
             
             $('#loadingDiv').hide();
 
-            var topic = window.otasBase.enums.dailyFlagType;
-            $.each(topic, function (i) {
-                $('#drpTopic').append('<option value='+ topic[i] +'>'+ topic[i].toUpperCase() +'</option>');
-            })
-
             $('#btnCall').click(function () {
 
                 $('#loadingDiv').text('Loding.....');
@@ -76,31 +58,26 @@
                     $('#loadingDiv').show();
                 }
 
-                var apiKey = $('#txtAPI').val();
-                var flagTopic = $("#drpTopic").val();
+                var apiKey = $('#txtAPI').val();                
                 var otasSecurityId = $("#txtStock").val();
-                var otasDate = $("#txtDate").val();
-                var isHeader = $("#drpHeader").val();
+                var otasDate = $("#txtDate").val();                
                 
                 window.otasBase.data.apiKey = apiKey;
-                window.otasBase.data.api.v1.stock(otasSecurityId).dailyFlags({ topic: flagTopic, date: otasDate }, function (flag) {
-                    var flagDiv = $(document.createElement("div"));
-                    if (!isHeader) { $(flagDiv).css('background-color', 'black'); }
-                    $(flagDiv).dailyFlag({ flag: flag[flagTopic], header: isHeader });
+                window.otasBase.data.api.v1.stock(otasSecurityId).dailyFlags({ date: otasDate }, function (flags) {
+                    var flagRowDiv = $(document.createElement("div"));                    
+                    $(flagRowDiv).dailyFlagRow({ flags: flags });
 
-                    $('#flag > div').fadeOut(2000).remove();
+                    $('#flagRow > div').fadeOut(2000).remove();
 
                     if ($('#loadingDiv').show()) {
                         $('#loadingDiv').hide();
                     }
 
-                    $('#flag').append(flagDiv);
+                    $('#flagRow').append(flagRowDiv);
                 });
-
-                $("#drpTopic").val('');
+               
                 $("#txtStock").val('');
                 $("#txtDate").val('');
-                $("#drpHeader").val('');
 
                 return false;                
             });
