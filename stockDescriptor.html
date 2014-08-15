@@ -30,16 +30,19 @@
     </style>-->
 </head>
 <body>
-    <h1>Stock Descriptor with HTML</h1>
-    <div class="stock-descriptor-load" data-stock="OT.UNSP.S"></div>
 
-    <h1>Stock Descriptor with Javascript</h1>
     <form id="frmGetComp" action="">
-        <p>API Key: <input type="text" id="txtAPI" value="" required /></p>
-        <p>Stock: <input type="text" id="txtStock" value="" required /></p>
-        <p><button id="btnCall">Call</button></p>
+        <p style="margin-top:1%;">
+            API Key: <input type="text" id="txtAPI" value="4D69167EF59EAC183AE1845A2D7EB" required />
+            Stock: <input type="text" id="txtStock" value="OT.AAPL.S" required />
+            <button id="btnCall">Call</button>
+        </p>
     </form>
 
+    <h1>Stock Descriptor with HTML</h1>
+    <div class="stock-descriptor-load" data-stock="OT.AAPL.S"></div>
+
+    <h1>Stock Descriptor with Javascript</h1>    
     <div id="loadingDiv"></div>
     <div id="stock"></div>
 

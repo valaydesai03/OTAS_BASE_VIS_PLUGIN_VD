@@ -30,28 +30,29 @@
     </style>-->
 </head>
 <body>
-    <h1>Stock stamp(CDS) with HTML</h1>
-    <div class="stock-stamp" data-stock="953133" data-topic="cds" data-header="true"></div>
 
-    <h1>Stock stamp with Javascript</h1>
     <form id="frmGetComp" action="">
-        <p>API Key: <input type="text" id="txtAPI" value="" required /></p>
-        <p>Stock: <input type="text" id="txtStock" value="" required /></p>
-        <p>Topic: 
+        <p style="margin-top:1%;">
+            API Key: <input type="text" id="txtAPI" value="4D69167EF59EAC183AE1845A2D7EB" required />
+            Stock: <input type="text" id="txtStock" value="953133" required />
+            Topic:
             <select id="drpTopic">
-                <option value="">Select</option>                
+                <option value="">Select</option>
             </select>
-        </p>                
-        <p>Header: 
+            Header:
             <select id="drpHeader">
                 <option value="">Select</option>
                 <option value="true">True</option>
                 <option value="false">False</option>
-            </select> 
+            </select>
+            <button id="btnCall">Call</button>
         </p>
-        <p><button id="btnCall">Call</button></p>
     </form>
-    
+
+    <h1>Stock stamp(CDS) with HTML</h1>
+    <div class="stock-stamp" data-stock="953133" data-topic="cds" data-header="true"></div>
+
+    <h1>Stock stamp with Javascript</h1>    
     <div id="loadingDiv"></div>
     <div id="stockStamp"></div>
 
@@ -94,7 +95,7 @@
                 });
 
                 $("#drpTopic").val('');
-                $("#txtStock").val('');                
+                //$("#txtStock").val('');                
                 $("#drpHeader").val('');
 
                 return false;                

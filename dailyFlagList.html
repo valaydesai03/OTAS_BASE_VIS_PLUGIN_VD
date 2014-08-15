@@ -33,15 +33,15 @@
 
     <h1>Dailyflag List</h1>
     <form id="frmGetComp" action="">
-        <p>API Key: <input type="text" id="txtAPI" value="" required /></p>
-        <p>List Type: 
+        <p>API Key: <input type="text" id="txtAPI" value="556DA8B3A38CDEFA8F84E5241F65C" required />
+        List Type: 
             <select id="drpListType">
                 <option value="">Select</option>                
             </select>
-        </p>
-        <p>List Id: <input type="text" id="txtListId" value="" required /></p>
-        <p>Date: <input type="text" id="txtDate" value="" required /></p>
-        <p><button id="btnCall">Call</button></p>
+        
+        List Id: <input type="text" id="txtListId" value="" required />
+        Date: <input type="text" id="txtDate" value="2014-05-07" required />
+        <button id="btnCall">Call</button></p>
     </form>
     
     <div id="loadingDiv"></div>
@@ -57,7 +57,7 @@
             $.each(listType, function (i) {
                 $('#drpListType').append('<option value=' + listType[i] + '>' + listType[i].toUpperCase() + '</option>');
             })
-
+            
             $('#btnCall').click(function () {
 
                 $('#loadingDiv').text('Loding.....');
@@ -89,7 +89,7 @@
 
                 $("#drpListType").val('');
                 $("#txtListId").val('');
-                $("#txtDate").val('');
+                //$("#txtDate").val('');
 
                 return false;                
             });

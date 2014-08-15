@@ -30,23 +30,25 @@
     </style>-->
 </head>
 <body>
-    <h1>Stock stamp row with HTML</h1>
-    <div class="stock-stamp-row" data-stock="OT.UNSP.S" data-header="true"></div>
-
-    <h1>Stock stamp Row with Javascript</h1>
+    
     <form id="frmGetComp" action="">
-        <p>API Key: <input type="text" id="txtAPI" value="" required /></p>
-        <p>Stock: <input type="text" id="txtStock" value="" required /></p>                       
-        <p>Header: 
+        <p style="margin-top:1%;">
+            API Key: <input type="text" id="txtAPI" value="4D69167EF59EAC183AE1845A2D7EB" required />
+            Stock: <input type="text" id="txtStock" value="OT.VOD.S" required />
+            Header:
             <select id="drpHeader">
                 <option value="">Select</option>
                 <option value="true">True</option>
                 <option value="false">False</option>
-            </select> 
+            </select>
+            <button id="btnCall">Call</button>
         </p>
-        <p><button id="btnCall">Call</button></p>
     </form>
     
+    <h1>Stock stamp row with HTML</h1>
+    <div class="stock-stamp-row" data-stock="OT.VOD.S" data-header="true"></div>
+
+    <h1>Stock stamp Row with Javascript</h1>    
     <div id="loadingDiv"></div>
     <div id="stockStampRow"></div>
 
@@ -87,7 +89,7 @@
                     $('#stockStampRow').append(stockStampRowDiv);
                 });
                 
-                $("#txtStock").val('');                
+                //$("#txtStock").val('');                
                 $("#drpHeader").val('');
 
                 return false;                
