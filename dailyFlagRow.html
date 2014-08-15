@@ -35,13 +35,13 @@
         <p style="margin-top:1%;">
             API Key: <input type="text" id="txtAPI" value="4D69167EF59EAC183AE1845A2D7EB" required />
             Stock: <input type="text" id="txtStock" value="OT.GLNG.S" required />
-            Date: <input type="text" id="txtDate" value="2014-05-07" />
+            Date: <input type="text" id="txtDate" value="2014-08-14" />
             <button id="btnCall">Call</button>
         </p>
     </form>
     
-    <h1>Dailyflag Row with HTML</h1>
-    <div class="dailyflagrow-load" data-stock="OT.GLNG.S" data-date="2014-05-07"></div>
+    <!--<h1>Dailyflag Row with HTML</h1>
+    <div class="dailyflagrow-load" data-stock="OT.GLNG.S" data-date="2014-05-07"></div>-->
 
     <h1>Dailyflag Row with Javascript</h1>        
     <div id="loadingDiv"></div>
@@ -79,7 +79,7 @@
                     $('#flagRow').append(flagRowDiv);
                 });
                
-                $("#txtStock").val('');
+                //$("#txtStock").val('');
                 //$("#txtDate").val('');
 
                 return false;                
